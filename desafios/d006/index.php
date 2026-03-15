@@ -8,31 +8,39 @@
 </head>
 <body>
     <main>
+
+        <?= $dividendo = $_GET['num'] ?? 0;
+            $divisor = $_GET['number2'] ?? 1;
+            if ($divisor !=0) {
+                $resto = $dividendo % $divisor;
+            $resultado = (int) ($dividendo / $divisor); 
+            }
+            
+        ?>
+
         <h1>Anatomia de uma Divisão</h1>
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="get">
             <label for="div">Dividendo</label>
-            <input type="number" name="num" id="num">
+            <input type="number" name="num" id="num" min="0" value="<?=$dividendo?>">
             <label for="divi">Divisor</label>
-            <input type="number" name="number2" id="number2">
+            <input type="number" name="number2" id="number2" min="1" value="<?= $divisor ?>">
             <input type="submit" value="Analisar">
 
         </form>
     </main>
     <section id="resultado">
         <h2>Estrutura da Divisão</h2>
-        <?php 
-            $dividendo = $_GET['num'] ?? 0;
-            $divisor = $_GET['number2'] ?? 0;
-            $resto = $dividendo % $divisor;
-
-            if ($divisor == 0) {
-                echo "<p>Não é possível dividir por zero.</p>";}
-            else {
-                $resultado = $dividendo / $divisor;echo "<p>O resultado da divisão de $dividendo por $divisor é <strong>igual a $resultado.</strong></p>";
-                }
-            print "<p><strong>O dividendo é $dividendo, o divisor é $divisor, o resto é $resto e o quociente é $resultado.</strong></p>";
-            
-        ?>
+    
+        <table class="divisao">
+            <tr>
+                <td><?= $dividendo ?></td>
+                <td><?= $divisor ?></td>
+            </tr>
+            <tr>
+                <td><?= $resto ?></td>
+                <td><?= $resultado ?></td>
+            </tr>
+        </table>
     </section>
     
 </body>
